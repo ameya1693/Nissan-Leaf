@@ -46,9 +46,15 @@ def main():
     """
 
     import_data= st.file_uploader("Upload driving Cycle data", type='csv')
+    show_file= st.empty()
 
-    df= pd.read_csv(import_data)
-    st.write(df)
+    if import_data is not None:
+        df = pd.read_csv(import_data, encoding='latin-1')
+        st.write(df)
+        # show_file.info("Please Upload a file : {}".format(''.join("csv")))
+
+
+    # st.write(df)
 
     st.markdown(html_temp,unsafe_allow_html=True)
     # day = st.text_input("Day")
