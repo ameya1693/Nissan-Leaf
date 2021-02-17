@@ -6,11 +6,11 @@ import streamlit as st
 #st.set_option('depreciation.showfileUploaderEncoading', False)
 @st.cache(allow_output_mutation=True)
 
-def load_model():
-    model = tf.keras.models.load_model("SOC_dynamic_dropout_v21.h5")
+# def load_model():
+#     model = tf.keras.models.load_model("SOC_dynamic_dropout_v21.h5")
 
-    return model
-model= load_model()
+#     return model
+# model= load_model()
 
 def load_model2():
     model2= tf.keras.models.load_model("Nissan Leaf-1.h5")
@@ -18,10 +18,10 @@ def load_model2():
 model2= load_model2()
 
 
-def predict_soc(hour, minute, speed, voltage, current, temp):
-    prediction= model.predict([[hour, minute, speed, voltage, current, temp]])
-    print(prediction)
-    return prediction
+# def predict_soc(hour, minute, speed, voltage, current, temp):
+#     prediction= model.predict([[hour, minute, speed, voltage, current, temp]])
+#     print(prediction)
+#     return prediction
 
 def energy_con(speed, accel):
     prediction= model2.predict([[speed, accel]])
@@ -130,7 +130,7 @@ def main():
         df1 = pd.DataFrame(output, columns=['Energy Consumption (kWh)','Battery Energy (kWh)', 'SoC (%)'])
         df1 = df1.astype('float')
         # st.write(df1.dtypes)
-        df1.to_excel(r'/Users/ameya/Desktop/Fastsim ML/outpt.xlsx', index=False)
+        # df1.to_excel(r'/Users/ameya/Desktop/Fastsim ML/outpt.xlsx', index=False)
 
         st.write(df1.style.format({ 'Energy Consumption (kWh)': '{:.2f}', 'Battery Energy (kWh)': '{:.2f}', 'SoC (%)': "{:.2f}%",}))
 
